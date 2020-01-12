@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>login bootstrap</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script>
+		function verify()
+		{
+			var x = document.getElementById("frm1");
+			var text = "";
+			var arr=[];
+			console.log(x.length);
+			for (i = 0; i < x.length ;i++) 
+			{
+				text = x.elements[i].value ;
+				arr[i]=text;
+				console.log(arr[i]);
+			}
+			var user=arr[0];
+			var password=arr[1];
+			var cpassword=arr[2];
+			if(user.length==0||password.length==0||cpassword.length==0)
+			{
+				alert("Fill all the details");
+				return;
+			}
+			var ver=true;
+			if(password!=cpassword)
+			{
+				ver=false;
+			}
+			if(!ver)
+			{
+				alert("both password does not match");
+				return;
+			}
+			if(password.length<8)
+			{
+				ver=false;
+			}
+			var reg1=/[A-Z]/;
+			var reg2=/[a-z]/;
+			var reg3=/\Babc/;
+			var reg4=/[$@*]/
+			if(!(reg1.test(password)&&reg2.test(password)&&reg3.test(password)))
+			{
+				ver=false;
+			}
+			console.log(ver);
+			if(ver)
+			{
+				alert("successfull!!");
+			}
+			else
+			{
+				alert("please match the password constraints");
+			}
+		}
+	</script>
+	<style>
+		body{
+			margin:10%
+			}
+	</style>
+</head>
+<body>
+	<form id=frm1>
+		<div class="form-group">
+	        	<label for="exampleInputEmail1">User Name</label>
+   			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter username" aria-describedby="emailHelp">
+    			
+ 		</div>
+  		<div class="form-group">
+    			<label for="exampleInputPassword1">Password</label>
+    			<input type="password" class="form-control" placeholder="Enter password" id="exampleInputPassword1">
+				<small id="passwordHelp" class="form-text text-muted">Password must be 1-minimum 8 chars 2-contain caps ,small letter and any special chars($,@,*) 4-abc together</small>
+  		</div>
+
+		<div class="form-group">
+    			<label for="exampleInputPassword1">Confirm</label>
+    			<input type="password" class="form-control" placeholder="Confirm password" id="exampleInputPassword2">
+  		</div>
+
+  		<div class="form-group form-check">
+    			<input type="checkbox" class="form-check-input" id="exampleCheck1">
+    			<label class="form-check-label" for="exampleCheck1">Remember me</label>
+  		</div>
+  		<button type="submit" class="btn btn-primary" onclick="verify()">Login</button>
+	</form>
+</body>
+</html>

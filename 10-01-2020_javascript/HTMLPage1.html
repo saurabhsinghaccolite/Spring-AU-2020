@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel = "stylesheet" href="style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<script>
+		function sortList()
+		{
+			var arr=[];
+			var i=0;
+			$(document).ready(function()
+			{
+				$("h3").each(function()
+				{
+					arr[i++]=$(this).text();
+					console.log(arr[i-1]);
+					
+				});
+				var na=arr.sort();
+				console.log(na);
+				i=0;
+				$("h3").each(function()
+					{
+					$(this).html(arr[i++]);
+					});
+			});
+			
+		}
+
+
+		function myFunction()
+		{
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("p")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+		
+	</script>
+</head>
+<body>
+
+		<div class="form-group">
+                        <label>Name </label>
+                        <input type="text" name="user" class="form-control" id="user" autocomplete="off">
+                        <span id = "username" class="text-danger font-weight-bold"> </span>
+                        <p><br></p>
+         </div>
+
+		 <form>
+                        Select your Country:
+                        <select id="myList" onchange="country()">
+                            <option></option>
+                            <option>India</option>
+                            <option>Canada</option>
+                            <option>USA</option>
+                            <option>China</option>
+                        </select>
+                        <p><br></p>
+                        <!-- <p>Your country is <input type="text" id = "favorite" size="20"></p> -->
+          </form>
+
+		  <div class="form-group">
+                        <label>Username </label>
+                        <input type="text" name="user" class="form-control" id="myInput" autocomplete="off" onkeyup="myFunction()" placeholder="Search for username" title="Type in a name">
+                        <span id = "username" class="text-danger font-weight-bold"> </span>
+           </div>
+
+		   <div>
+                    <ul id="myUL">
+                        <li><p>Neta1312</p></li>
+                        <li><p>Vader</p></li>
+                      
+                        <li><p>daku</p></li>
+                        <li><p>Immortals ッ</p></li>
+                      
+                        <li><p>Squad Killer ⍤ </p></li>
+                        </br>
+                      </ul>
+                    </div>
+
+
+		
+		
+		<div id=sort>
+                  
+                        <h3>JavaScript</h3>
+                        <h3>C</h3>
+						<h3>Python</h3>
+						<h3>HTML</h3>
+                      
+                        
+                   
+         </div>
+		 <button onclick="sortList()" color="red" >Sort</button>
+</body>
+</html>
